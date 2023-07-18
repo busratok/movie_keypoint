@@ -1,11 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "../pages/Login";
+import PrivateRouter from "./PrivateRouter";
+import Home from "../pages/Home";
 
 const AppRouter = () => {
   return (
     <Router>
       <Routes>
         <Route path="" element={<Login />} />
+        <Route path="home" element={<PrivateRouter />}>
+          <Route index element={<Home />} />
+        </Route>
       </Routes>
     </Router>
   );
