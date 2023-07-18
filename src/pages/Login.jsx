@@ -2,13 +2,16 @@ import React, { useRef } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ user, setUser }) => {
   const formRef = useRef(null);
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     sessionStorage.setItem("user", JSON.stringify(user));
     formRef.current.reset();
+    navigate("home");
   };
   return (
     <Container className="d-flex flex-column justify-content-center align-items-center min-vh-100">
