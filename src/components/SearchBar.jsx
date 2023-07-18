@@ -20,7 +20,7 @@ const SearchBar = ({ setQuery, getMultiData }) => {
           />
         </Form.Group>
         <Form.Group as={Col} md="2">
-          <Button type="submit" className="w-100">
+          <Button type="submit" className="w-100" variant="dark">
             Search
           </Button>
         </Form.Group>
