@@ -24,7 +24,7 @@ const Home = () => {
     <Container className="text-center mt-4">
       <SearchBar setQuery={setQuery} getMultiData={getMultiData} />
       <Container className="rounded-4 my-4 p-3">
-        <Row className="g3 justify-contnt-center">
+        <Row className="g-4 justify-content-center">
           {multiData.map((item) => (
             <Col key={item.id} md={6} lg={4} xl={3}>
               <InfoCard {...item} />
