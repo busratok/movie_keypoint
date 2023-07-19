@@ -15,7 +15,7 @@ const AppRouter = () => {
         <Route path="" element={<Login user={user} setUser={setUser} />} />
         <Route element={<PrivateRouter />}>
           <Route path="/home" element={<Home user={user} />} />
-          <Route path="/details/:id" element={<Details />} />
+          <Route path="/details/:media_type/:id" element={<Details />} />
         </Route>
       </Routes>
     </Router>

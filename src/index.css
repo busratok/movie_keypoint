@@ -39,3 +39,14 @@ code {
 .card:hover .card-over {
   transform: translateY(0%);
 }
+
+.details-card img {
+  object-fit: cover;
+  height: 96%;
+  max-width: 100%;
+}
+@media screen and (min-width: 1200px) {
+  .details-card img {
+    height: 600px;
+  }
+}
