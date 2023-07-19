@@ -1,12 +1,19 @@
+import { useContext } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { Context } from "../context/Context";
+import { useNavigate } from "react-router-dom";
 
-const SearchBar = ({ setQuery, getMultiData }) => {
+const SearchBar = () => {
+  const { setQuery, getMultiData, multiData } = useContext(Context);
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setQuery(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     getMultiData();
+    navigate("/home");
   };
   return (
     <Form onSubmit={handleSubmit}>

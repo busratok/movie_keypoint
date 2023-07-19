@@ -7,22 +7,10 @@ import { Context } from "../context/Context";
 import Header from "../components/Header";
 
 const Home = () => {
-  const [query, setQuery] = useState("");
-  const [multiData, setMultiData] = useState([]);
-  const { API_KEY } = useContext(Context);
-  const MULTI_SEARCH_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${query}`;
+  const { API_KEY, getMultiData, multiData } = useContext(Context);
+
   const defaultImg =
     "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2056&q=80";
-
-  const getMultiData = async () => {
-    try {
-      const { data } = await axios.get(MULTI_SEARCH_API);
-      let { results } = await data;
-      setMultiData(results);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <>
@@ -33,7 +21,7 @@ const Home = () => {
         </Container>
       ) : ( */}
       <Container className="text-center mt-4">
-        <SearchBar setQuery={setQuery} getMultiData={getMultiData} />
+        <SearchBar />
         <Container className="rounded-4 my-4 p-3">
           {!multiData.length ? (
             <Container className="d-flex justify-content-center">

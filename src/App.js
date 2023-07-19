@@ -1,3 +1,4 @@
+import Header from "./components/Header";
 import ContextProvider from "./context/Context";
 import AppRouter from "./router/AppRouter";
 
