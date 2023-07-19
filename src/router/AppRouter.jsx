@@ -6,15 +6,12 @@ import { useState } from "react";
 import Details from "../pages/Details";
 
 const AppRouter = () => {
-  const [user, setUser] = useState(
-    JSON.parse(sessionStorage.getItem("user")) || false
-  );
   return (
     <Router>
       <Routes>
-        <Route path="" element={<Login user={user} setUser={setUser} />} />
+        <Route path="" element={<Login />} />
         <Route element={<PrivateRouter />}>
-          <Route path="/home" element={<Home user={user} />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/details/:media_type/:id" element={<Details />} />
         </Route>
       </Routes>
