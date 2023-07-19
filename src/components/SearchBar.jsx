@@ -17,6 +17,7 @@ const SearchBar = ({ setQuery, getMultiData }) => {
             type="search"
             className="w-100"
             onChange={(e) => handleChange(e)}
+            autoFocus
           />
         </Form.Group>
         <Form.Group as={Col} md="2">

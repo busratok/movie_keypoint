@@ -49,7 +49,7 @@ const Details = () => {
             <Col lg={6} className="d-flex flex-column justify-content-between">
               <div>
                 <h2>Overview</h2>
-                <p>{details.overview}</p>
+                <p>{details.overview ? details.overview : "Not found"}</p>
               </div>
 
               <ListGroup className="list-group-flush bg-dark rounded">
@@ -62,18 +62,18 @@ const Details = () => {
                 </ListGroup.Item>
                 <ListGroup.Item className="list-group-item-dark">
                   {media_type === "person"
-                    ? `Popularity: ${details.popularity}`
+                    ? `Birtday: ${details.birthday}`
                     : `Rate: ${
                         details.vote_average
                           ? details.vote_average.toFixed(1)
                           : "N/A"
                       } `}
                 </ListGroup.Item>
-                {media_type !== "person" && (
-                  <ListGroup.Item className="list-group-item-dark">
-                    Total Vote: {details.vote_count || "N/A"}
-                  </ListGroup.Item>
-                )}
+                <ListGroup.Item className="list-group-item-dark">
+                  {media_type === "person"
+                    ? `Popularity: ${details.popularity}`
+                    : `Total Vote: ${details.vote_count || "N/A"}`}
+                </ListGroup.Item>
               </ListGroup>
             </Col>
           </Row>
