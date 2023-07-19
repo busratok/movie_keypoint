@@ -45,8 +45,17 @@ code {
   height: 96%;
   max-width: 100%;
 }
+.homeImg {
+  width: 60%;
+  max-height: 50vh;
+  border-radius: 1rem;
+}
+
 @media screen and (min-width: 1200px) {
   .details-card img {
     height: 600px;
+  }
+  .homeImg {
+    max-height: 80vh;
   }
 }
