@@ -50,6 +50,29 @@ code {
   max-height: 50vh;
   border-radius: 1rem;
 }
+.login-container {
+  background-image: url("https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.7);
+  top: 50%;
+  left: 50%;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 2rem;
+
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
 
 @media screen and (min-width: 1200px) {
   .details-card img {

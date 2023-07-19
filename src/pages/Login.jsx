@@ -16,47 +16,51 @@ const Login = () => {
     navigate("home");
   };
   return (
-    <Container className="d-flex flex-column justify-content-center align-items-center min-vh-100">
-      <h1 className="mb-5">Log In</h1>
-      <Form onSubmit={handleSubmit} ref={formRef}>
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter your email"
-            onChange={(e) =>
-              setUser((user) => ({ ...user, email: e.target.value }))
-            }
-            required
-            autoFocus
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="username">
-          <Form.Label>User Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter your username"
-            onChange={(e) =>
-              setUser((user) => ({ ...user, userName: e.target.value }))
-            }
-            required
-            maxLength={8}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Enter your password"
-            onChange={(e) =>
-              setUser((user) => ({ ...user, password: e.target.value }))
-            }
-            required
-            minLength={6}
-          />
-        </Form.Group>
-        <Button type="submit">Submit form</Button>
-      </Form>
+    <Container fluid className="min-vh-100 login-container">
+      <Container className="d-flex flex-column justify-content-center align-items-center min-vh-100 ">
+        <h1 className="mb-5 text-light">Movie App</h1>
+        <Form onSubmit={handleSubmit} ref={formRef} className="form-container">
+          <Form.Group className="mb-3" controlId="email">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter your email"
+              onChange={(e) =>
+                setUser((user) => ({ ...user, email: e.target.value }))
+              }
+              required
+              autoFocus
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="username">
+            <Form.Label>User Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter your username"
+              onChange={(e) =>
+                setUser((user) => ({ ...user, userName: e.target.value }))
+              }
+              required
+              maxLength={8}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter your password"
+              onChange={(e) =>
+                setUser((user) => ({ ...user, password: e.target.value }))
+              }
+              required
+              minLength={6}
+            />
+          </Form.Group>
+          <Button type="submit" variant="dark">
+            Log In
+          </Button>
+        </Form>
+      </Container>
     </Container>
   );
 };
