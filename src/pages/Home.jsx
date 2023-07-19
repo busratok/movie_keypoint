@@ -1,13 +1,14 @@
 import { Col, Container, Row } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import InfoCard from "../components/InfoCard";
+import { Context } from "../context/Context";
 
 const Home = () => {
   const [query, setQuery] = useState("");
   const [multiData, setMultiData] = useState([]);
-  const API_KEY = process.env.REACT_APP_TMDB_KEY;
+  const { API_KEY } = useContext(Context);
   const MULTI_SEARCH_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${query}`;
 
   const getMultiData = async () => {

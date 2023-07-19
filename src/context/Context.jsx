@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
 
-const API_KEY = process.env.REACT_APP_TMDB_KEY;
-
 export const Context = createContext();
+
+const API_KEY = process.env.REACT_APP_TMDB_KEY;
 
 const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(
@@ -11,6 +11,7 @@ const ContextProvider = ({ children }) => {
   const values = {
     user,
     setUser,
+    API_KEY,
   };
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };

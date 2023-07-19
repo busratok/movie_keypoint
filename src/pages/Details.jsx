@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Card, Col, Container, Image, ListGroup, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { Context } from "../context/Context";
 
 const baseImageUrl = "https://image.tmdb.org/t/p/w1280";
 const defaultImg =
@@ -10,7 +11,8 @@ const defaultImg =
 const Details = () => {
   const [details, setDetails] = useState("");
   const { id, media_type } = useParams();
-  const DETAIL_API = `https://api.themoviedb.org/3/${media_type}/${id}?api_key=0645fb1570f2a33e1057eaf829704368`;
+  const { API_KEY } = useContext(Context);
+  const DETAIL_API = `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${API_KEY}`;
   const getDetails = async () => {
     try {
       let { data } = await axios(DETAIL_API);
