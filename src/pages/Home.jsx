@@ -7,12 +7,10 @@ import { Context } from "../context/Context";
 import Header from "../components/Header";
 
 const Home = () => {
-  const { API_KEY, getMultiData, multiData } = useContext(Context);
+  const { API_KEY, getMultiData, multiData, defaultImg, user } =
+    useContext(Context);
 
-  const defaultImg =
-    "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2056&q=80";
-
-  return (
+  return user ? (
     <>
       <Header />
       {/* {!multiData.length ? (
@@ -40,6 +38,8 @@ const Home = () => {
       </Container>
       {/* )} */}
     </>
+  ) : (
+    <div></div>
   );
 };
 

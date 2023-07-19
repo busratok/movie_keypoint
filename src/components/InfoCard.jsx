@@ -1,9 +1,7 @@
+import { useContext } from "react";
 import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
-const baseImageUrl = "https://image.tmdb.org/t/p/w1280";
-const defaultImg =
-  "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2056&q=80";
+import { Context } from "../context/Context";
 
 const InfoCard = ({
   title,
@@ -15,6 +13,7 @@ const InfoCard = ({
   profile_path,
 }) => {
   const navigate = useNavigate();
+  const { defaultImg, baseImageUrl } = useContext(Context);
   return (
     <Card
       className="card bg-dark rounded border border-0 h-100"

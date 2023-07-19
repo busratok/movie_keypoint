@@ -6,14 +6,10 @@ import { Context } from "../context/Context";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 
-const baseImageUrl = "https://image.tmdb.org/t/p/w1280";
-const defaultImg =
-  "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2056&q=80";
-
 const Details = () => {
   const [details, setDetails] = useState("");
   const { id, media_type } = useParams();
-  const { API_KEY } = useContext(Context);
+  const { API_KEY, defaultImg, baseImageUrl } = useContext(Context);
   const DETAIL_API = `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${API_KEY}`;
   const getDetails = async () => {
     try {
