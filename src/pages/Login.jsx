@@ -31,6 +31,18 @@ const Login = () => {
             autoFocus
           />
         </Form.Group>
+        <Form.Group className="mb-3" controlId="username">
+          <Form.Label>User Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter your username"
+            onChange={(e) =>
+              setUser((user) => ({ ...user, userName: e.target.value }))
+            }
+            required
+            maxLength={8}
+          />
+        </Form.Group>
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
