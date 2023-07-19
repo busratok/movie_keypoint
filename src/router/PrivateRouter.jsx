@@ -1,8 +1,9 @@
+import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import { Context } from "../context/Context";
 
 const PrivateRouter = () => {
-  const user = JSON.parse(sessionStorage.getItem("user"));
-  console.log(user);
+  const { user } = useContext(Context);
   return user ? <Outlet /> : <Navigate to="/" />;
 };
 
