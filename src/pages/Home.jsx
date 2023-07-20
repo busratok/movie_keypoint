@@ -6,9 +6,10 @@ import { Context } from "../context/Context";
 import Header from "../components/Header";
 import { Navigate } from "react-router-dom";
 import Error from "../components/Error";
+import loadingImg from "../assets/loading.gif";
 
 const Home = () => {
-  const { multiData, defaultImg, user, error } = useContext(Context);
+  const { multiData, defaultImg, user, error, loading } = useContext(Context);
 
   // Render different content based on whether a user is authenticated or not
   return user ? (
@@ -19,6 +20,10 @@ const Home = () => {
         <SearchBar />
         {error ? (
           <Error />
+        ) : loading ? (
+          <Container className="mt-5 text-center">
+            <Image src={loadingImg} alt="loading" style={{ width: "300px" }} />
+          </Container>
         ) : (
           <Container className="rounded-4 my-4 p-3">
             {!multiData.length ? (

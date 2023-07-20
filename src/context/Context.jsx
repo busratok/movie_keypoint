@@ -12,6 +12,7 @@ const ContextProvider = ({ children }) => {
   const [query, setQuery] = useState(""); // Store the current search query
   const [multiData, setMultiData] = useState([]); // Store the search results from the API
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
   const MULTI_SEARCH_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${query}`;
@@ -26,8 +27,10 @@ const ContextProvider = ({ children }) => {
       let { results } = await data;
       setMultiData(results);
       setError(false);
+      setLoading(false);
     } catch (error) {
       setError(true);
+      setLoading(false);
     }
   };
 
@@ -44,6 +47,8 @@ const ContextProvider = ({ children }) => {
     defaultImg,
     error,
     setError,
+    loading,
+    setLoading,
   };
 
   // Return the Context.Provider component with the 'values' object as the value for the provided context

@@ -6,12 +6,20 @@ import { Context } from "../context/Context";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import Error from "../components/Error";
+import loadingImg from "../assets/loading.gif";
 
 const Details = () => {
   const [details, setDetails] = useState("");
   const { id, media_type } = useParams(); // Extract 'id' and 'media_type' from route parameters using 'useParams' hook
-  const { API_KEY, defaultImg, baseImageUrl, error, setError } =
-    useContext(Context);
+  const {
+    API_KEY,
+    defaultImg,
+    baseImageUrl,
+    error,
+    setError,
+    loading,
+    setLoading,
+  } = useContext(Context);
   const DETAIL_API = `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${API_KEY}`;
 
   // Define the 'getDetails' function to fetch details from the API
@@ -22,6 +30,8 @@ const Details = () => {
       setError(false);
     } catch (error) {
       setError(true);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -33,6 +43,14 @@ const Details = () => {
 
   if (error) {
     return <Error />;
+  }
+
+  if (loading) {
+    return (
+      <Container className="mt-5 text-center">
+        <Image src={loadingImg} alt="loading" style={{ width: "300px" }} />
+      </Container>
+    );
   }
 
   return (
