@@ -25,8 +25,9 @@ const ContextProvider = ({ children }) => {
       const { data } = await axios.get(MULTI_SEARCH_API);
       let { results } = await data;
       setMultiData(results);
+      setError(false);
     } catch (error) {
-      console.log(error);
+      setError(true);
     }
   };
 
