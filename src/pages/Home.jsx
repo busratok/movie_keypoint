@@ -1,6 +1,6 @@
 import { Col, Container, Image, Row } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import InfoCard from "../components/InfoCard";
 import { Context } from "../context/Context";
 import Header from "../components/Header";
@@ -8,16 +8,20 @@ import { Navigate } from "react-router-dom";
 import Error from "../components/Error";
 import loadingImg from "../assets/loading.gif";
 
+// Memoize Header and SearchBar component to optimize rendering
+const MemoizedHeader = memo(Header);
+const MemoizedSearchBar = memo(SearchBar);
+
 const Home = () => {
   const { multiData, defaultImg, user, error, loading } = useContext(Context);
 
   // Render different content based on whether a user is authenticated or not
   return user ? (
     <>
-      <Header />
+      <MemoizedHeader />
 
       <Container className="text-center mt-4">
-        <SearchBar />
+        <MemoizedSearchBar />
         {error ? (
           <Error />
         ) : loading ? (

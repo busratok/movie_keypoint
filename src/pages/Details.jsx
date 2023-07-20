@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { memo, useContext, useEffect, useState } from "react";
 import { Col, Container, Image, ListGroup, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Context } from "../context/Context";
@@ -7,6 +7,9 @@ import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import Error from "../components/Error";
 import loadingImg from "../assets/loading.gif";
+
+const MemoizedHeader = memo(Header);
+const MemoizedSearchBar = memo(SearchBar);
 
 const Details = () => {
   const [details, setDetails] = useState("");
@@ -55,9 +58,9 @@ const Details = () => {
 
   return (
     <>
-      <Header />
+      <MemoizedHeader />
       <Container className="text-center mt-4">
-        <SearchBar />
+        <MemoizedSearchBar />
         <Container className="mt-5 mb-5">
           <h1 className="text-center">{details.title || details.name}</h1>
           <Container className="mt-5 details-card bg-dark text-light rounded p-5">
