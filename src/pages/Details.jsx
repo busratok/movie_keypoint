@@ -12,7 +12,7 @@ const Details = () => {
   const { id, media_type } = useParams(); // Extract 'id' and 'media_type' from route parameters using 'useParams' hook
   const { API_KEY, defaultImg, baseImageUrl, error, setError } =
     useContext(Context);
-  const DETAIL_API = `https://api.themoviedb.org/3/${media_type}/${id}?api_ky=${API_KEY}`;
+  const DETAIL_API = `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${API_KEY}`;
 
   // Define the 'getDetails' function to fetch details from the API
   const getDetails = async () => {
