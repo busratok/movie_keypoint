@@ -5,20 +5,23 @@ import { useParams } from "react-router-dom";
 import { Context } from "../context/Context";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
+import Error from "../components/Error";
 
 const Details = () => {
   const [details, setDetails] = useState("");
   const { id, media_type } = useParams(); // Extract 'id' and 'media_type' from route parameters using 'useParams' hook
-  const { API_KEY, defaultImg, baseImageUrl } = useContext(Context);
-  const DETAIL_API = `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${API_KEY}`;
+  const { API_KEY, defaultImg, baseImageUrl, error, setError } =
+    useContext(Context);
+  const DETAIL_API = `https://api.themoviedb.org/3/${media_type}/${id}?api_ky=${API_KEY}`;
 
   // Define the 'getDetails' function to fetch details from the API
   const getDetails = async () => {
     try {
       let { data } = await axios(DETAIL_API);
       setDetails(data);
+      setError(false);
     } catch (error) {
-      console.log(error);
+      setError(true);
     }
   };
 
@@ -27,6 +30,10 @@ const Details = () => {
     getDetails();
     console.log(details);
   }, []);
+
+  if (error) {
+    return <Error />;
+  }
 
   return (
     <>

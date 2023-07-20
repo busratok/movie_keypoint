@@ -11,6 +11,7 @@ const ContextProvider = ({ children }) => {
   ); // Store user data obtained from sessionStorage or set it to 'false' if no user data is found
   const [query, setQuery] = useState(""); // Store the current search query
   const [multiData, setMultiData] = useState([]); // Store the search results from the API
+  const [error, setError] = useState(false);
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
   const MULTI_SEARCH_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${query}`;
@@ -40,6 +41,8 @@ const ContextProvider = ({ children }) => {
     multiData,
     baseImageUrl,
     defaultImg,
+    error,
+    setError,
   };
 
   // Return the Context.Provider component with the 'values' object as the value for the provided context
