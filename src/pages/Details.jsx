@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { Card, Col, Container, Image, ListGroup, Row } from "react-bootstrap";
+import { Col, Container, Image, ListGroup, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Context } from "../context/Context";
 import Header from "../components/Header";
@@ -8,9 +8,11 @@ import SearchBar from "../components/SearchBar";
 
 const Details = () => {
   const [details, setDetails] = useState("");
-  const { id, media_type } = useParams();
+  const { id, media_type } = useParams(); // Extract 'id' and 'media_type' from route parameters using 'useParams' hook
   const { API_KEY, defaultImg, baseImageUrl } = useContext(Context);
   const DETAIL_API = `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${API_KEY}`;
+
+  // Define the 'getDetails' function to fetch details from the API
   const getDetails = async () => {
     try {
       let { data } = await axios(DETAIL_API);
@@ -20,6 +22,7 @@ const Details = () => {
     }
   };
 
+  // Use 'useEffect' to fetch details once the component mounts
   useEffect(() => {
     getDetails();
     console.log(details);
@@ -51,11 +54,13 @@ const Details = () => {
               >
                 <div>
                   <h2>Overview</h2>
+                  {/* Display the overview if available, otherwise show "Not found" */}
                   <p>{details.overview ? details.overview : "Not found"}</p>
                 </div>
 
                 <ListGroup className="list-group-flush bg-dark rounded">
                   <ListGroup.Item className="list-group-item-dark">
+                    {/* Display either "Known for" or "Release Date" based on 'media_type' */}
                     {media_type === "person"
                       ? `Known for: ${details.known_for_department}`
                       : `Release Date: ${
@@ -63,6 +68,7 @@ const Details = () => {
                         }`}
                   </ListGroup.Item>
                   <ListGroup.Item className="list-group-item-dark">
+                    {/* Display either "Birthday" or "Rate" based on 'media_type' */}
                     {media_type === "person"
                       ? `Birtday: ${details.birthday}`
                       : `Rate: ${
@@ -72,6 +78,7 @@ const Details = () => {
                         } `}
                   </ListGroup.Item>
                   <ListGroup.Item className="list-group-item-dark">
+                    {/* Display either "Popularity" or "Total Vote" based on 'media_type' */}
                     {media_type === "person"
                       ? `Popularity: ${details.popularity}`
                       : `Total Vote: ${details.vote_count || "N/A"}`}

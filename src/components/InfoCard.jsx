@@ -14,12 +14,15 @@ const InfoCard = ({
 }) => {
   const navigate = useNavigate();
   const { defaultImg, baseImageUrl } = useContext(Context);
+
   return (
+    // Create a Card component to display movie/TV show/person information
     <Card
       className="card bg-dark rounded border border-0 h-100"
       role="button"
       onClick={() => navigate(`/details/${media_type}/${id}`)}
     >
+      {/* Card image (poster or profile picture) */}
       <Card.Img
         variant="top"
         src={

@@ -7,14 +7,18 @@ import { Context } from "../context/Context";
 
 const Login = () => {
   const { user, setUser } = useContext(Context);
+  // Create a ref for the form element to access its methods
   const formRef = useRef(null);
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     sessionStorage.setItem("user", JSON.stringify(user));
     formRef.current.reset();
+    // Navigate to the 'home' route after successful login
     navigate("home");
   };
+
   return (
     <Container fluid className="min-vh-100 login-container">
       <Container className="d-flex flex-column justify-content-center align-items-center min-vh-100 ">
