@@ -1,6 +1,6 @@
 import { Col, Container, Image, Row } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
-import { memo, useContext } from "react";
+import { memo, useContext, useEffect } from "react";
 import InfoCard from "../components/InfoCard";
 import { Context } from "../context/Context";
 import Header from "../components/Header";
@@ -13,7 +13,12 @@ const MemoizedHeader = memo(Header);
 const MemoizedSearchBar = memo(SearchBar);
 
 const Home = () => {
-  const { multiData, defaultImg, user, error, loading } = useContext(Context);
+  const { multiData, defaultImg, user, error, loading, setLoading } =
+    useContext(Context);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
   // Render different content based on whether a user is authenticated or not
   return user ? (
